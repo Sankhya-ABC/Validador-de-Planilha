@@ -1,4 +1,4 @@
-# Validador-de-Planilha
+# Validador-de-Planilha-Parceiros
 Aplicativo desktop em Python para validação automática de cadastros de parceiros (clientes e fornecedores). Combina regras customizadas de validação de campos, limpeza de dados e consulta de CEP via BrasilAPI, com interface Tkinter e geração de relatórios em Excel.
 
 ## Tecnologias e Dependências
