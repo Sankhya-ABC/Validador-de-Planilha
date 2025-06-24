@@ -53,12 +53,12 @@ pip install pandas requests pillow
 
 ## Descrição Detalhada dos Scripts
 ### 1.regra_validacao.py
-- `**REGRAS**`: dicionário que define para cada coluna:
+- **`REGRAS`**: dicionário que define para cada coluna:
     - `obrigatorio`: se o campo deve ser preenchido.
     - `tipo`: `booleano`, `numerico` ou `alfanumerico`.
     - `max_tamanho`: comprimento máximo (ou `None`).
 - **`extrair_regras_do_apoio()`**: retorna cópia das `REGRAS` incluindo chave `coluna` em lowercase.
-- `**validar_campo(valor, regra)**`:
+- **`validar_campo(valor, regra)`**:
     1. Verifica obrigatoriedade.
     2. Ignora campos vaxios não obrigatórios.
     3. Limpa pontuação para inscrição estadual.
