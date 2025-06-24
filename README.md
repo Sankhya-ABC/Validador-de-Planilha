@@ -8,6 +8,7 @@ Um aplicativo desktop em Python que valida cadastros de parceiros (clientes e fo
     - requests: requisições HTTP
     - tkinter: GUI (incluso no Python)
     - pillow: manipulação de imagens (GIF/logo animado)
+
 Instalação:
 ```python
     pip install pandas requests pillow
