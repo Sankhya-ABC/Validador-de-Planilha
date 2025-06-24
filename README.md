@@ -34,4 +34,65 @@ pip install pandas requests pillow
     - Multithreading para manter a GUI responsiva durante processamento.
 5. **Geração de Relatórios**
     - Diretório `saida/` com:
-          - `dados_validos.xlsx`: registros sem erros.
+    - `dados_validos.xlsx`: registros sem erros.
+    - `dados_invalidos.xlsx`: registros com lista de erros na coluna `OBS_Validação`.
+    - `validacao_cep.xlsx`: detalhes da validação de CEP para cada registro.
+
+## Estrutura de Arquivos
+```python
+├── regra_validacao.py                # def. regras e funçõs de validação de campos
+├── utils.py                          # funções de limpeza de texto e extração de dígitos
+├── validador_cep.py                  # validação de CEP via BrasilAPI e cache LRU
+├── validador_com_cep.py              # interface Tkinter e fluxo de validação completo
+├── futuro_animado.gif                # GIF para animação do logo
+└── saida/                            # pasta criada após execução, com resultados
+    ├── dados_validos.xlsx
+    ├── dados_invalidos.xlsx
+    └── validacao_cep.xlsx
+```
+
+## Descrição Detalhada dos Scripts
+### 1.regra_validacao.py
+- `**REGRAS**`: dicionário que define para cada coluna:
+    - `obrigatorio`: se o campo deve ser preenchido.
+    - `tipo`: `booleano`, `numerico` ou `alfanumerico`.
+    - `max_tamanho`: comprimento máximo (ou `None`).
+- `**extrair_regras_do_apoio()**`: retorna cópia das `REGRAS` incluindo chave `coluna` em lowercase.
+- `**validar_campo(valor, regra)**`:
+    1. Verifica obrigatoriedade.
+    2. Ignora campos vaxios não obrigatórios.
+    3. Limpa pontuação para inscrição estadual.
+    4. Valida tipo e tamanho.
+    5. Retorna `(True, "")` se ok, ou `(False, mensagem)`.
+- `validar_linha(row: pd.Series, regras)`: faz loop por cada regra, aplica `validar_campo` e acumula erros.
+### 2.utils.py
+- `limpar_para_contagem(valor)`: usa regex para remover `.`, `-`, `/`, espaços.
+- `somente_digitos(valor)`: usa regex para extrair apenas dígitos.
+### 3.validador_cep.py
+- Constante: `BRASILAPI_URL_TEMPLATE` com endpoint BrasilAPI.
+- `@lru_cache(maxsize=2000)` em `validar_cep_simples(raw_cep)` para acelerar múltiplas chamadas.
+- Fluxo:
+    1. Normalize e valida formato (8 dígitos).
+    2. Realiza `GET` na API com `requests`.
+    3. Popula resultado com campos de endereço ou mensagem de erro.
+### 4.validador_com_cep.py
+- Classe `ValidadorApp`:
+    - Contrói janela principal, frames, botões e estilos.
+    - Carrega e anima logo GIF.
+    - Métodos de seleção de arquivo, iniciar/parar validação.
+    - `_run_validation`:
+    - 1. Lê planilha (`sheet_name="Infos"`).
+      2. Para cada linha, aplica limpeza e validação de campos.
+      3. 
+
+
+
+
+
+
+
+
+
+
+
+
