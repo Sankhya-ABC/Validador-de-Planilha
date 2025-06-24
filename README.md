@@ -24,5 +24,5 @@ pip install pandas requests pillow
     - `somente_digitos(valor: str) -> str`: mantém apenas caracteres de 0 a 9.
 3. **Validação de CEP** (`validador_cep.py`)
     - Função `validar_cep_simples(raw_cep: str) -> dict`: retorna dicionário com campos:
-          - `cep_original`, `cep_limpo`, `valido`(bool), `logradouro`, `bairro`, `localidade`, `uf`, `erro`.
+          `cep_original`, `cep_limpo`, `valido`(bool), `logradouro`, `bairro`, `localidade`, `uf`, `erro`.
       
