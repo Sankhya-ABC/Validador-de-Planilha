@@ -34,4 +34,4 @@ pip install pandas requests pillow
     - Multithreading para manter a GUI responsiva durante processamento.
 5. **Geração de Relatórios**
     - Diretório `saida/` com:
-    -     `dados_validos.xlsx`: registros sem erros.
+          - `dados_validos.xlsx`: registros sem erros.
