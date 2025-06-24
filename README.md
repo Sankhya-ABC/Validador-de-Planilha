@@ -57,7 +57,7 @@ pip install pandas requests pillow
     - `obrigatorio`: se o campo deve ser preenchido.
     - `tipo`: `booleano`, `numerico` ou `alfanumerico`.
     - `max_tamanho`: comprimento máximo (ou `None`).
-- `**extrair_regras_do_apoio()**`: retorna cópia das `REGRAS` incluindo chave `coluna` em lowercase.
+- **`extrair_regras_do_apoio()`**: retorna cópia das `REGRAS` incluindo chave `coluna` em lowercase.
 - `**validar_campo(valor, regra)**`:
     1. Verifica obrigatoriedade.
     2. Ignora campos vaxios não obrigatórios.
