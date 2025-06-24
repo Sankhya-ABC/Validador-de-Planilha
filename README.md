@@ -13,3 +13,7 @@ Instalação:
 ```python
     pip install pandas requests pillow
 ```
+
+## Funcionalidades
+1. Validação de Campos
+    - Checa obrigatoriedade `(obrigatorio)`, tipo `(booleano, numerico, alfanumerico)` e tamanho máximo `(max_tamanho)`.
