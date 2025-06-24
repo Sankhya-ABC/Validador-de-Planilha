@@ -47,3 +47,31 @@ Um aplicativo desktop em Python que valida cadastros de parceiros (clientes e fo
     ├── dados_invalidos.xlsx
     └── validacao_cep.xlsx
 ```
+
+## Como Executar
+1. Preparar Arquivo de Entrada
+    - Formato Excel (`.xlsx`) ou CSV.
+    - Aba chamada `Infos` (apenas no caso do Excel).
+    - Colunas obrigatórias conforme `REGRAS` em `regra_validacao.py`.
+2. Executar Aplicação
+```python
+    python validador_com_cep.py
+```
+3. Selecionar Arquivo
+    - Clique em **Procurar**, escolha o arquivo e clique em **Executar Validação**.
+4. Monitorar Progresso
+    - Acompanhe a barra e o texto que informa linhas processadas e inválidas.
+    - Para interromper, clique em **Parar**.
+5. Verificar Saída
+    - Abra os arquivos gerados na pasta `saida/`.
+  
+## Exemplo de Uso
+Suponha um arquivo `cadastro.xlsx` com aba `Infos`. Após seleção e execução:
+- Linhas sem inconsistências vão para `saida/dados_validos.xlsx`.
+- Linhas com erros (tipo, falta de dado obrigatório, comprimento excedido) vão para `saida/dados_invalidos.xlsx`, coluna `OBS_Validação` detalha cada erro.
+- Consulta de CEP em `saida/validacao_cep.xlsx` informando resultado e preenchendo endereço quando possível.
+
+## Personalizações
+- **Regras de Validação**: modifique o dicionário `REGRAS` em `regra_validacao.py` (adicione campos, ajuste `max_tamanho`, `tipo` ou `obrigatorio`).
+- **GUI**: em `validador_com_cep.py`, altere cores, fontes, layout e tempo de animação.
+- **Cache/Timeout CEP**: ajuste `@lru_cache(maxsize=...)` ou `timeout` da requisição em `validador_cep.py`.
