@@ -25,4 +25,13 @@ pip install pandas requests pillow
 3. **Validação de CEP** (`validador_cep.py`)
     - Função `validar_cep_simples(raw_cep: str) -> dict`: retorna dicionário com campos:
           `cep_original`, `cep_limpo`, `valido`(bool), `logradouro`, `bairro`, `localidade`, `uf`, `erro`.
-      
+    - Utiliza cache LRU de até 2000 entradas para evitar chamadas repetidas.
+    - Consulta `https://brasilapi.com.br/api/cep/v1/{CEP}` com timeout configurável.
+4. **Interface Gráfica** (`validador_com_cep.py`)
+    - Janela Tkinter com seleção de arquivo Excel/CSV e botões de iniciar/parar.
+    - Barra de progresso e contador de registros válidos/invalidos.
+    - Animação de logo via GIF (arquivo `futuro_animado.gif`).
+    - Multithreading para manter a GUI responsiva durante processamento.
+5. **Geração de Relatórios**
+    - Diretório `saida/` com:
+    -     `dados_validos.xlsx`: registros sem erros.
