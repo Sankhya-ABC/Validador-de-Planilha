@@ -81,10 +81,28 @@ pip install pandas requests pillow
     - Carrega e anima logo GIF.
     - Métodos de seleção de arquivo, iniciar/parar validação.
     - `_run_validation`:
-    - 1. Lê planilha (`sheet_name="Infos"`).
+      1. Lê planilha (`sheet_name="Infos"`).
       2. Para cada linha, aplica limpeza e validação de campos.
-      3. 
+      3. Chama `validar_cep_simples`, preenche `BAIRRO`, `CIDADE`, `UF` se possível.
+      4. Atualiza progress bar e labels.
+      5. Salva DataFrames de válidos, inválidos e CEP em `saida/`.
+      6. Exibe popup com resumo.
+- Variáveis de controle global (`cancelado`) para interromper thread.
 
+## Como Executar
+```python
+python validador_com_cep.py
+```
+1. Selecione o arquivo `.xlsx` ou `.csv` com aba `Infos`.
+2. Clique em **Executar Validação**.
+3. Acompanhe barra de progresso; clique em **Parar** para cancelar.
+4. Verifique a pasta `saida/`.
+
+## Personalizações & Contribuição
+Consulte as seções de *Personalizações e Contribuição* no README original para detalhes sobre ajuste de regras, GUI, cache, além do workflow Git.
+
+## Licença
+MIT License.
 
 
 
